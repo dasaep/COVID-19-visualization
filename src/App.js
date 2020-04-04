@@ -5,6 +5,7 @@ import LeftBar from './components/LeftBar';
 import MapComponent from './components/Map';
 import RightComponent from './components/RightBar';
 import LoadingComponent from './loader';
+import Vulnerable from './components/Vulnerable';
 import axios from 'axios';
 import 'antd/dist/antd.css';
 import './App.css';
@@ -25,7 +26,7 @@ class App extends Component {
 
     componentDidMount() {
         axios
-            .get('http://127.0.0.1:5000/getInitialData')
+            .get('http://127.0.0.1:5000/getInitialData')            
             .then(res => {
                 this.setState({
                     result: res.data,
@@ -72,6 +73,11 @@ class App extends Component {
                                 deaths={this.state.result.death}
                                 recovered={this.state.result.recovere}
                             />
+                        </Col>                                        
+                    </Row>
+                    <Row>
+                        <Col span={24}>
+                            <Vulnerable/>
                         </Col>
                     </Row>
                 </div>
